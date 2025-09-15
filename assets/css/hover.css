@@ -30,15 +30,22 @@ Add more styling like drop shadows or rounded corners.
 /* --- 2. The Text Styling --- */
 /* This adds the dashed underline to the text inside the container. */
 #main .hover-container span {
-  color: inherit; /* Use the default text color from main.css */
-  text-decoration: none;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
-  transition: border-bottom-color 0.2s ease;
+  display: inline-block; /* Make the span behave like a block for styling purposes */
+  color: rgba(255, 255, 255, 0.65); /* Use the default text color from main.css */
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: #a6c5ff;
+  text-underline-offset: 0.25em; 
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  /* border-bottom: 1px dashed #a6c5ff; */
+  /* border-bottom-color: #a6c5ff;  NOT NEEDED */
+  /* transition: border-bottom-color 0.2s ease; */
 }
 
 /* This makes the underline brighter on hover for better user feedback. */
 #main .hover-container:hover span {
-  border-bottom-color: #ffffff;
+  border-bottom-color: transparent; /* it was #ffffff; */
+  color: #ffffff;
 }
 
 /* --- 3. The Hidden Content Box (The Image) --- */
