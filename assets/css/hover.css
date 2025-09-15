@@ -1,0 +1,110 @@
+/* ================================ */
+/* IMAGE HOVER COMPONENT STYLES     */
+/* Version 2.0                      */
+/* CSS to create a hover effect     */
+/* ================================ */
+
+/*
+🔍Explanation:
+.hover-container: The text you hover over.
+.hover-image: The image that's hidden by default (display: none) and shown only when you hover.
+
+position: absolute: Lets the image appear near the text (can be styled as tooltip, popup, etc.).
+
+✅ You Can Customize:
+Change top, left, or use right / bottom to adjust image position.
+
+Use transitions or animations for smoother effects.
+
+Add more styling like drop shadows or rounded corners.
+*/
+
+/* --- 1. The Container --- */
+/* This rule sets up the basic positioning context. */
+#main .hover-container {
+  position: relative;
+  display: inline-block; /* Changed from inline to allow for better positioning control */
+  cursor: pointer;
+}
+
+/* --- 2. The Text Styling --- */
+/* This adds the dashed underline to the text inside the container. */
+#main .hover-container span {
+  color: inherit; /* Use the default text color from main.css */
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
+  transition: border-bottom-color 0.2s ease;
+}
+
+/* This makes the underline brighter on hover for better user feedback. */
+#main .hover-container:hover span {
+  border-bottom-color: #ffffff;
+}
+
+/* --- 3. The Hidden Content Box (The Image) --- */
+/* This is the default state: hidden and positioned below the text. */
+#main .hover-content {
+  position: absolute;
+  top: 130%;
+  left: 0;
+  z-index: 10;
+  
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  
+  /* Hides the content by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s ease; /* A smoother, faster fade */
+}
+
+/* When the container is hovered, this makes the content visible. */
+#main .hover-container:hover .hover-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- 4. The Side-Positioning Modifier --- */
+/* This is the special class for the honors page. */
+/* It overrides the default position to move the image to the side. */
+#main .hover-content.hover-on-side {
+  /* Positioning: Vertically center and place to the right */
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%); /* The modern vertical centering trick */
+  margin-left: 15px;          /* Add a small gap */
+  
+  /* Sizing */
+  width: 280px; /* Adjust as needed */
+}
+
+/* --- 5. Image Scaling --- */
+/* This ensures the image always fits neatly inside its container. */
+#main .hover-content img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ================================ */
+/* HOVER COMPONENT MODIFIERS        */
+/* ================================ */
+
+/* Use this class for text-based popups */
+#main .hover-content.hover-text-box {
+  width: 250px; /* Set a comfortable width for reading */
+  text-align: left; /* Ensure text is not centered */
+}
+
+#main .hover-content.hover-text-box h3 {
+  margin-top: 0;
+  color: #333; /* Dark color for the heading */
+}
+
+#main .hover-content.hover-text-box p {
+  margin-bottom: 0;
+  color: #555; /* Slightly lighter color for the body text */
+  font-size: 0.9em;
+}
